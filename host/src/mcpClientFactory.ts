@@ -1,8 +1,9 @@
-import { McpServerId, MCP_SERVERS, SUPPORTED_MCP_VERSIONS, VERSION_MODULES, CLIENT_INFO } from "./config.js";
+import { McpServerId, MCP_SERVERS, SUPPORTED_MCP_VERSIONS, VERSION_MODULES, MCP_CLIENTS, McpClientId } from "./config.js";
 import { McpClient } from "./mcpClient.js";
 
-export async function createMcpClient(serverId: McpServerId): Promise<McpClient> {
+export async function createMcpClient(clientId: McpClientId, serverId: McpServerId): Promise<McpClient> {
   const url = MCP_SERVERS[serverId].url;
+  const clientInfo = MCP_CLIENTS[clientId];
 
   for (const version of SUPPORTED_MCP_VERSIONS) {
     const versionModule = VERSION_MODULES[version];
@@ -12,7 +13,7 @@ export async function createMcpClient(serverId: McpServerId): Promise<McpClient>
 
     const response = await client.initialize(
       versionModule.methods.initialize,
-      versionModule.getInitializeParams(CLIENT_INFO)
+      versionModule.getInitializeParams(clientInfo)
     );
 
     if (!response?.error && response?.result?.protocolVersion) {

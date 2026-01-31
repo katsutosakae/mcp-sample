@@ -16,7 +16,7 @@ function prompt(question: string): Promise<string> {
 
 async function main() {
   try {
-    const client = await createMcpClient("sample-mcp-http-server");
+    const client = await createMcpClient("weather", "weather");
     console.log(`MCP Server : ${client.getId()} \nMCP Version: ${client.getProtocolVersion()}`);
     
     const toolsResponse = await client.request("tools/list");
