@@ -1,0 +1,12 @@
+{
+    "jsonrpc": "2.0",
+    "id": 2,
+    "result": {
+        "content": [
+            {
+                "type": "text",
+                "text": "Forecast for 40.71, -94.0:\n\nTonight:\nTemperature: -2°F\nWind: 8 mph NNW\nClear\n---\nSaturday:\nTemperature: 20°F\nWind: 6 mph W\nSunny\n---\nSaturday Night:\nTemperature: 10°F\nWind: 3 to 10 mph SSW\nMostly Cloudy then Slight Chance Light Snow\n---\nSunday:\nTemperature: 35°F\nWind: 7 to 10 mph SW\nSlight Chance Light Snow then Partly Sunny\n---\nSunday Night:\nTemperature: 20°F\nWind: 6 mph WNW\nMostly Cloudy\n---\nMonday:\nTemperature: 38°F\nWind: 2 to 6 mph NNE\nPartly Sunny\n---\nMonday Night:\nTemperature: 24°F\nWind: 6 mph E\nMostly Cloudy\n---\nTuesday:\nTemperature: 36°F\nWind: 8 mph NNE\nSlight Chance Light Snow then Mostly Cloudy\n---\nTuesday Night:\nTemperature: 19°F\nWind: 6 mph N\nMostly Cloudy\n---\nWednesday:\nTemperature: 32°F\nWind: 8 mph N\nPartly Sunny\n---\nWednesday Night:\nTemperature: 18°F\nWind: 6 mph WNW\nMostly Cloudy\n---\nThursday:\nTemperature: 42°F\nWind: 6 to 12 mph SW\nMostly Sunny\n---\nThursday Night:\nTemperature: 27°F\nWind: 10 mph W\nPartly Cloudy\n---\nFriday:\nTemperature: 41°F\nWind: 10 to 14 mph NW\nMostly Sunny\n---"
+            }
+        ]
+    }
+}

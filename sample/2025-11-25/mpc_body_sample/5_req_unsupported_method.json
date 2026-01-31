@@ -1,0 +1,12 @@
+{
+  "jsonrpc": "2.0",
+  "id": 2,
+  "method": "tools/unknown",
+  "params": {
+    "name": "get_weather",
+    "arguments": {
+      "longitude": "40.71",
+      "latitude": "94.0"
+    }
+  }
+}

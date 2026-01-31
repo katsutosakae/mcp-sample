@@ -1,0 +1,10 @@
+// https://www.jsonrpc.org/specification_v1
+{
+    "jsonrpc": "2.0", //MCPでは2.0使用 https://modelcontextprotocol.io/specification/2025-11-25/basic/lifecycle
+    "id": "number",
+    "error": {
+        "code": "number", // defined between -32768 and -32000
+        "message": "string",
+        "data": "primitive or structed value"
+    }
+}

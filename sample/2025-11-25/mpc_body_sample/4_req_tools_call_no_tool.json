@@ -1,0 +1,12 @@
+{
+  "jsonrpc": "2.0",
+  "id": 2,
+  "method": "tools/call",
+  "params": {
+    "name": "get_fish_position",
+    "arguments": {
+      "longitude": "-94.0",
+      "latitude": "40.71"
+    }
+  }
+}
