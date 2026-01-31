@@ -29,6 +29,7 @@ You will be given:
 2) A user request
 
 Answer user request with API result.
+Do not mention that you are referring to the API results.
 
 API Result (JSON):
 ${result}
