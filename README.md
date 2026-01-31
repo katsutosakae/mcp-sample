@@ -1,0 +1,2 @@
+# mcp-sample
+easy-sample
