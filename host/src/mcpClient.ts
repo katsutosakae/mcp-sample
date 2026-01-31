@@ -1,26 +1,33 @@
-import { McpServerId } from "./config.js";
+import { McpClientId, McpServerId } from "./config.js";
 import type { JsonRpcResponse } from "./jsonrpc.js";
 import { jsonRpcRequest, jsonRpcNotificationRequest, sendRequest, sendNotification } from "./jsonrpc.js";
 
 export type McpClientOptions = {
+  clientId: McpClientId;
   serverId: McpServerId;
   url: string;
   version: string;
 };
 
-export class McpClient {
-  private id: string;
-  protected url: string;
-  protected version: string;
+export class McpClient<T extends string> {
+  private clientId: string;
+  private serverId: string;
+  private url: string;
+  private version: string;
 
   constructor(params: McpClientOptions) {
-    this.id = params.serverId;
+    this.clientId = params.clientId;
+    this.serverId = params.serverId;
     this.url = params.url;
     this.version = params.version;
   }
 
-  public getId(): string {
-    return this.id;
+  public getClientId(): string {
+    return this.clientId;
+  }
+
+  public getServerId(): string {
+    return this.serverId;
   }
 
   public getServerUrl(): string {
@@ -31,18 +38,18 @@ export class McpClient {
     return this.version;
   }
 
-  public async initialize(method: string, params: Record<string, any>): Promise<JsonRpcResponse> {
+  public async initialize(method: T, params: Record<string, any>): Promise<JsonRpcResponse> {
     const req = jsonRpcRequest(method, params);
     return sendRequest(this.url, req);
   }
 
-  public async request(method: string, params?: Record<string, any>): Promise<JsonRpcResponse> {
+  public async request(method: T, params?: Record<string, any>): Promise<JsonRpcResponse> {
     const req = jsonRpcRequest(method, params);
     return sendRequest(this.url, req, {
       "MCP-Protocol-Version": this.version,
     });
   }
-  public async notification(method: string, params?: Record<string, any>): Promise<void> {
+  public async notification(method: T, params?: Record<string, any>): Promise<void> {
     const req = jsonRpcNotificationRequest(method, params);
     await sendNotification(this.url, req, {
       "MCP-Protocol-Version": this.version,

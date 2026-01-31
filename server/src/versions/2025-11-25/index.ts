@@ -1,15 +1,17 @@
 import type { Request, Response } from "express";
 import { jsonRpcResultResponse, jsonRpcErrorResponse } from "../../jsonrpc.js";
+import { Method, ToolDef, ToolSchema } from "./types.js";
 import { tools } from "./tools/index.js";
 
 export async function handleMcpRequest(req: Request, res: Response) {
   const msg = req.body;
-
+  const method : Method = msg.method
+  
   try {
     // メソッド毎の処理
-    switch (msg.method) {
-      case "tools/list": {
-        const toolList = Object.values(tools).map((t) => ({
+    switch (method) {
+      case "tools/list": Method : {
+        const toolList : ToolSchema[] = Object.values(tools).map((t) => ({
           name: t.name,
           description: t.description,
           inputSchema: t.inputSchema,
@@ -19,13 +21,13 @@ export async function handleMcpRequest(req: Request, res: Response) {
         );
       }
 
-      case "tools/call": {
+      case "tools/call": Method : {
         const toolName = msg.params?.name;
         const input = msg.params?.arguments;
         if (!toolName) {
           return res.status(200).json(jsonRpcErrorResponse(msg.id!, -32602, "Missing params.name"));
         }
-        const tool = tools[toolName];
+        const tool : ToolDef = tools[toolName];
         if (!tool) {
           return res.status(200).json(jsonRpcErrorResponse(msg.id!, -32602, `Unknown tool: ${toolName}`));
         }

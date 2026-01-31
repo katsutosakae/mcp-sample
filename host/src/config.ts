@@ -1,11 +1,10 @@
 import * as v2025_11_25 from "./versions/2025-11-25/index.js";
 
 // MCPホスト単位のバージョン情報（JSONRPCのメソッドに書く値が変わるイメージ）
-export const SUPPORTED_MCP_VERSIONS = ["2025-03-26", "2025-11-25"];
+export const SUPPORTED_MCP_VERSIONS = ["2025-11-25"];
 export type SupportedMcpVersion = typeof SUPPORTED_MCP_VERSIONS[number];
 export const VERSION_MODULES: Record<SupportedMcpVersion, any> = {
-  "2025-11-25": v2025_11_25,
-  "2025-03-26": null
+  "2025-11-25": v2025_11_25
 };
 
 // MCPホスト内のMCPクライアント一覧

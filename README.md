@@ -13,6 +13,8 @@ MCP (Model Context Protocol) のサンプル実装です。
   - MCPサーバ：Tools のみ（最小限のパラメータ）、PrommptとResource無し
 - **その他**
   - バージョン拡張しやすいように実装
+  - AIにはClaude APIを使用
+  - 自力実装することが目的なので、mcpやanthropic提供のライブラリ系は使用せずに頑張ります
 
 ## ディレクトリ構成
 
@@ -51,7 +53,7 @@ MCP (Model Context Protocol) のサンプル実装です。
 | 成功   | 200 OK           | Notification 以外の処理（POST） |
 | エラー | 400 Bad Request  | 未対応バージョン、その他エラー  |
 
-### その他
+### その他 MCP実装のポイント
 
 - **Notification**: id フィールドを省略 ([JSON-RPC 2.0 仕様](https://www.jsonrpc.org/specification))
 - **ページネーション**: 未対応（cursor なし）
@@ -66,6 +68,31 @@ MCP (Model Context Protocol) のサンプル実装です。
 - [MCP Protocol Version Header](https://modelcontextprotocol.io/specification/2025-11-25/basic/transports#protocol-version-header)
 - [MCP Schema (GitHub)](https://github.com/modelcontextprotocol/modelcontextprotocol/tree/main/schema)
 - [HTTP 202 Accepted](https://developer.mozilla.org/ja/docs/Web/HTTP/Reference/Status/202)
+
+## Claudeのセットアップ
+- [Get Started](https://platform.claude.com/docs/en/get-started)
+- [Claude Console](https://platform.claude.com/settings/keys)からAPI Keyを発行
+- 最低5$を入金
+- 以下のAPIコールを参考に、TypeScriptからfetchを行う
+
+```bash
+curl https://api.anthropic.com/v1/messages \
+  -H "Content-Type: application/json" \
+  -H "x-api-key: $ANTHROPIC_API_KEY" \
+  -H "anthropic-version: 2023-06-01" \
+  -d '{
+    "model": "claude-sonnet-4-5",
+    "max_tokens": 1000,
+    "messages": [
+      {
+        "role": "user", 
+        "content": "What should I search for to find the latest developments in renewable energy?"
+      }
+    ]
+  }'
+```
+
+
 
 ## テスト用 curl コマンド
 

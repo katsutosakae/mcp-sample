@@ -5,11 +5,3 @@ export type ToolSchema = {
   description: string;
   inputSchema: any;
 };
-
-export type ToolDef = {
-  handler: (input: any) => Promise<ToolResult>;
-} & ToolSchema;
-
-export type ToolResult = {
-  content: Array<{ type: string; text: string }>;
-};
