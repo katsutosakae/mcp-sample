@@ -10,8 +10,8 @@ export type McpClientOptions = {
 };
 
 export class McpClient<T extends string> {
-  private clientId: string;
-  private serverId: string;
+  private clientId: McpClientId;
+  private serverId: McpServerId;
   private url: string;
   private version: string;
 
